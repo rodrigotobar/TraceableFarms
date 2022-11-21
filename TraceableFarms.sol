@@ -15,7 +15,6 @@ contract TraceableFarms {
 
     // Estructura de consorcio de productores agrícolas
     struct Consortium {
-        string id;
         string name;
     }
 
@@ -31,26 +30,44 @@ contract TraceableFarms {
 
     // Estructura de tipo de acreditación
     struct AccreditationType {
-        string id;
         string name;
     }
 
     // Estructura de acreditación
     struct Accreditation {
-        string id;
         string name;
         AccreditationType accreditationType;
     }
 
     // Estructura de acreditación de una empresa
-    struct AccreditationCompany {
+    struct CompanyAccreditation {
         Accreditation accreditation;
-        string checker;
+        string checkerHash;
+        string checkerUrl;
+    }
+
+    // Estructura de tipo de huella
+    struct FootprintType {
+        string name;
+        string unitMeasurementName;
+        string unitMeasurementSymbol;
+    }
+
+    // Estructura de tipo de reporte de huella (reportabilidad de la huella)
+    struct FootprintReportType {
+        string name;
+    }
+
+    // Estructura de reportabilidad de huella de una empresa
+    struct CompanyFootprintReportability {
+        Company company;
+        FootprintType footprintType;
+        FootprintReportType footprintReportType;
+        string description;
     }
 
     // Estructura de lote de un producto agrícola
     struct Batch {
-        string id;
         string number;
         string date;
         string productName;
@@ -73,121 +90,208 @@ contract TraceableFarms {
         string description;
     }
 
-    // Estructura de tipo de huella
-    struct FootprintType {
-        string id;
-        string name;
-        string unitMeasurementName;
-        string unitMeasurementSymbol;
+    // Estructura de huella de un proceso (de un lote)
+    struct BatchFootprint {
+        FootprintType footprintType;
+        uint totalValue;
     }
+
+    // Estructura de valores y verificadores de huella de un proceso (de un lote)
+    struct BatchFootprintValue {
+        string description;
+        uint value;
+        string checkerHash;
+        string checkerUrl;
+    }
+    
 
     // Mapping para persistencia de consorcios
-    mapping (string => Consortium) private consortiums;
+    mapping (bytes32 => Consortium) private consortiums;
 
     // Mapping para persistencia de empresas
-    mapping (string => Company) private companies;
+    mapping (bytes32 => Company) private companies;
 
     // Mapping para persistencia de tipos de acreditación
-    mapping (string => AccreditationType) private accreditationTypes;
+    mapping (bytes32 => AccreditationType) private accreditationTypes;
 
     // Mapping para persistencia de acreditaciones
-    mapping (string => Accreditation) private accreditations;
+    mapping (bytes32 => Accreditation) private accreditations;
 
     // Mapping para persistencia de acreditaciones de una empresa
-    mapping (string => AccreditationCompany[]) private accreditationCompanies;
-
-    // Mapping para persistencia de lotes de producto
-    mapping (string => Batch) private batches;
-
-    // Mapping para persistencia de origenes de un lote
-    mapping (string => BatchOrigin[]) private batchOrigins;
-
-    // Mapping para persistencia de procesos de un lote
-    mapping (string => BatchProcess[]) private batchProcesses;
+    mapping (bytes32 => CompanyAccreditation[]) private companiesAccreditation;
 
     // Mapping para persistencia de tipos de huella
-    mapping (string => FootprintType) private footprintTypes;
+    mapping (bytes32 => FootprintType) private footprintTypes;
+    
+    // Mapping para persistencia de tipos de reporte de huella
+    mapping (bytes32 => FootprintReportType) private footprintReportTypes;
+
+    // Mapping para persistencia de reportabilidad de huella de una empresa
+    mapping (bytes32 => CompanyFootprintReportability[]) private companiesFootprintReportability;
+
+    // Mapping para persistencia de lotes de producto
+    mapping (bytes32 => Batch) private batches;
+
+    // Mapping para persistencia de origenes de un lote
+    mapping (bytes32 => BatchOrigin[]) private batchOrigins;
+
+    // Mapping para persistencia de procesos de un lote
+    mapping (bytes32 => BatchProcess[]) private batchProcesses;
+
+    // Mapping para persistencia de huellas de un proceso (de un lote)
+    mapping (bytes32 => BatchFootprint[]) private batchFootprints;
+
+    // Mapping para persistencia de valores y verificadores de huellas de un proceso (de un lote)
+    mapping (bytes32 => BatchFootprintValue[]) private batchFootprintValues;
 
 
-    function setConsortium(string memory _id, string memory _name) public {
-        consortiums[_id] = Consortium(_id, _name);
+    function setConsortium(string memory _name) public {
+        bytes32 consortiumHash = keccak256(abi.encodePacked(_name));
+        consortiums[consortiumHash] = Consortium(_name);
     }
 
-    function getConsortium(string memory _id) public view returns (Consortium memory) {
-        return consortiums[_id];
+    function getConsortium(string memory _name) public view returns (Consortium memory) {
+        bytes32 consortiumHash = keccak256(abi.encodePacked(_name));
+        return consortiums[consortiumHash];
     }
 
-    function setCompany(string memory _nif, string memory _bussinessName, string memory _location, string memory _locationCoordinates, string memory _informationalResourceUrl, string memory _consortiumId) public {
-        companies[_nif] = Company(_nif, _bussinessName, _location, _locationCoordinates, _informationalResourceUrl, getConsortium(_consortiumId));
+    function setCompany(string memory _nif, string memory _bussinessName, string memory _location, string memory _locationCoordinates, string memory _informationalResourceUrl, string memory _consortiumName) public {
+        bytes32 companyHash = keccak256(abi.encodePacked(_nif));
+        companies[companyHash] = Company(_nif, _bussinessName, _location, _locationCoordinates, _informationalResourceUrl, getConsortium(_consortiumName));
     }
 
     function getCompany(string memory _nif) public view returns (Company memory) {
-        return companies[_nif];
+        bytes32 companyHash = keccak256(abi.encodePacked(_nif));
+        return companies[companyHash];
     }
 
-    function setAccreditationType(string memory _id, string memory _name) public {
-        accreditationTypes[_id] = AccreditationType(_id, _name);
+    function setAccreditationType(string memory _name) public {
+        bytes32 accreditationTypeHash = keccak256(abi.encodePacked(_name));
+        accreditationTypes[accreditationTypeHash] = AccreditationType(_name);
     }
 
-    function getAccreditationType(string memory _id) public view returns (AccreditationType memory) {
-        return accreditationTypes[_id];
+    function getAccreditationType(string memory _name) public view returns (AccreditationType memory) {
+        bytes32 accreditationTypeHash = keccak256(abi.encodePacked(_name));
+        return accreditationTypes[accreditationTypeHash];
     }
 
-    function setAccreditation(string memory _id, string memory _name, string memory _accreditationTypeId) public {
-        accreditations[_id] = Accreditation(_id, _name, getAccreditationType(_accreditationTypeId));
+    function setAccreditation(string memory _name, string memory _accreditationTypeName) public {
+        bytes32 accreditationHash = keccak256(abi.encodePacked(_name));
+        accreditations[accreditationHash] = Accreditation(_name, getAccreditationType(_accreditationTypeName));
     }
 
-    function getAccreditation(string memory _id) public view returns (Accreditation memory) {
-        return accreditations[_id];
+    function getAccreditation(string memory _name) public view returns (Accreditation memory) {
+        bytes32 accreditationHash = keccak256(abi.encodePacked(_name));
+        return accreditations[accreditationHash];
     }    
 
-    function setAccreditationCompany(string memory _nif, string memory _accreditationId, string memory _checker) public {
-        accreditationCompanies[_nif].push(
-            AccreditationCompany(getAccreditation(_accreditationId), _checker)
+    function setCompanyAccreditation(string memory _nif, string memory _accreditationName, string memory _checkerHash, string memory _checkerUrl) public {
+        bytes32 companyHash = keccak256(abi.encodePacked(_nif));
+        
+        companiesAccreditation[companyHash].push(
+            CompanyAccreditation(getAccreditation(_accreditationName), _checkerHash, _checkerUrl)
         );
     }
 
-    function getAccreditationCompany(string memory _nif) public view returns (AccreditationCompany[] memory) {
-        return accreditationCompanies[_nif];
+    function getCompanyAccreditation(string memory _nif) public view returns (CompanyAccreditation[] memory) {
+        bytes32 companyHash = keccak256(abi.encodePacked(_nif));
+        return companiesAccreditation[companyHash];
     }
 
-    function setBatch(string memory _id, string memory _number, string memory _date, string memory _productName, string memory _productVariety, string memory _productDescription, string memory _productPhotoUrl, string memory _companyId) public {
-        batches[_id] = Batch(_id, _number, _date, _productName, _productVariety, _productDescription, _productPhotoUrl, getCompany(_companyId));
+    function setFootprintType(string memory _name, string memory _unitMeasurementName, string memory _unitMeasurementSymbol) public {
+        bytes32 footprintTypeHash = keccak256(abi.encodePacked(_name));
+        footprintTypes[footprintTypeHash] = FootprintType(_name, _unitMeasurementName, _unitMeasurementSymbol);
     }
 
-    function getBatch(string memory _id) public view returns (Batch memory) {
-        return batches[_id];
+    function getFootprintType(string memory _name) public view returns (FootprintType memory) {
+        bytes32 footprintTypeHash = keccak256(abi.encodePacked(_name));
+        return footprintTypes[footprintTypeHash];
+    }
+    
+    function setFootprintReportType(string memory _name) public {
+        bytes32 footprintReportTypeHash = keccak256(abi.encodePacked(_name));
+        footprintReportTypes[footprintReportTypeHash] = FootprintReportType(_name);
     }
 
-    function setBatchOrigin(string memory _batchId, string memory _description, string memory _location, string memory _locationCoordinates) public {
-        batchOrigins[_batchId].push(
+    function getFootprintReportType(string memory _name) public view returns (FootprintReportType memory) {
+        bytes32 footprintReportTypeHash = keccak256(abi.encodePacked(_name));
+        return footprintReportTypes[footprintReportTypeHash];
+    }
+
+    function setCompanyFootprintReportability(string memory _nif, string memory _footprintTypeName, string memory _footprintReportTypeName, string memory _description) public {
+        bytes32 companyFootprintReportabilityHash = keccak256(abi.encodePacked(_nif, _footprintTypeName));
+
+        companiesFootprintReportability[companyFootprintReportabilityHash].push(
+            CompanyFootprintReportability(getCompany(_nif), getFootprintType(_footprintTypeName), getFootprintReportType(_footprintReportTypeName), _description)
+        );
+    }
+
+    function getCompanyFootprintReportability(string memory _nif, string memory _footprintTypeName) public view returns (CompanyFootprintReportability[] memory) {
+        bytes32 companyFootprintReportabilityHash = keccak256(abi.encodePacked(_nif, _footprintTypeName));
+
+        return companiesFootprintReportability[companyFootprintReportabilityHash];
+    }
+
+    function setBatch(string memory _number, string memory _date, string memory _productName, string memory _productVariety, string memory _productDescription, string memory _productPhotoUrl, string memory _companyNif) public {
+        bytes32 batchHash = keccak256(abi.encodePacked(_companyNif, _number));
+        batches[batchHash] = Batch(_number, _date, _productName, _productVariety, _productDescription, _productPhotoUrl, getCompany(_companyNif));
+    }
+
+    function getBatch(string memory _companyNif, string memory _number) public view returns (Batch memory) {
+        bytes32 batchHash = keccak256(abi.encodePacked(_companyNif, _number));
+        return batches[batchHash];
+    }
+
+    function setBatchOrigin(string memory _companyNif, string memory _batchNumber, string memory _description, string memory _location, string memory _locationCoordinates) public {
+        bytes32 batchHash = keccak256(abi.encodePacked(_companyNif, _batchNumber));
+
+        batchOrigins[batchHash].push(
             BatchOrigin(_description, _location, _locationCoordinates)
         );
     }
 
-    function getBatchOrigin(string memory _batchId) public view returns (BatchOrigin[] memory) {
-        return batchOrigins[_batchId];
+    function getBatchOrigin(string memory _companyNif, string memory _batchNumber) public view returns (BatchOrigin[] memory) {
+        bytes32 batchHash = keccak256(abi.encodePacked(_companyNif, _batchNumber));
+        return batchOrigins[batchHash];
     }
 
-    function setBatchProcess(string memory _batchId, string memory _name, string memory _description) public {
-        batchProcesses[_batchId].push(
+    function setBatchProcess(string memory _companyNif, string memory _batchNumber, string memory _name, string memory _description) public {
+        bytes32 batchHash = keccak256(abi.encodePacked(_companyNif, _batchNumber));
+
+        batchProcesses[batchHash].push(
             BatchProcess(_name, _description)
         );
     }
 
-    function getBatchProcess(string memory _batchId) public view returns (BatchProcess[] memory) {
-        return batchProcesses[_batchId];
+    function getBatchProcess(string memory _companyNif, string memory _batchNumber) public view returns (BatchProcess[] memory) {
+        bytes32 batchHash = keccak256(abi.encodePacked(_companyNif, _batchNumber));
+        return batchProcesses[batchHash];
     }
 
-    function setFootprintType(string memory _id, string memory _name, string memory _unitMeasurementName, string memory _unitMeasurementSymbol) public {
-        footprintTypes[_id] = FootprintType(_id, _name, _unitMeasurementName, _unitMeasurementSymbol);
+    function setBatchFootprint(string memory _companyNif, string memory _batchNumber, string memory _processName, string memory _footprintTypeName, uint _totalValue) public {
+        bytes32 batchFootprintHash = keccak256(abi.encodePacked(_companyNif, _batchNumber, _processName));
+
+        batchFootprints[batchFootprintHash].push(
+            BatchFootprint(getFootprintType(_footprintTypeName), _totalValue)
+        );
     }
 
-    function getFootprintType(string memory _id) public view returns (FootprintType memory) {
-        return footprintTypes[_id];
+    function getBatchFootprint(string memory _companyNif, string memory _batchNumber, string memory _processName) public view returns (BatchFootprint[] memory) {
+        bytes32 batchFootprintHash = keccak256(abi.encodePacked(_companyNif, _batchNumber, _processName));
+        return batchFootprints[batchFootprintHash];
     }
 
-    
+    function setBatchFootprintValue(string memory _companyNif, string memory _batchNumber, string memory _processName, string memory _footprintTypeName, string memory _description, uint _value, string memory _checkerHash, string memory checkerUrl) public {
+        bytes32 batchFootprintValueHash = keccak256(abi.encodePacked(_companyNif, _batchNumber, _processName, getFootprintType(_footprintTypeName).name));
 
+        batchFootprintValues[batchFootprintValueHash].push(
+            BatchFootprintValue(_description, _value, _checkerHash, checkerUrl)
+        );
+    }
+
+    function getBatchFootprintValue(string memory _companyNif, string memory _batchNumber, string memory _processName, string memory _footprintTypeName) public view returns (BatchFootprintValue[] memory) {
+        bytes32 batchFootprintValueHash = keccak256(abi.encodePacked(_companyNif, _batchNumber, _processName, getFootprintType(_footprintTypeName).name));
+        return batchFootprintValues[batchFootprintValueHash];
+    }
 
 }

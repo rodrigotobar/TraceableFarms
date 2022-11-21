@@ -30,26 +30,17 @@ var (
 
 // TraceableFarmsAccreditation is an auto generated low-level Go binding around an user-defined struct.
 type TraceableFarmsAccreditation struct {
-	Id                string
 	Name              string
 	AccreditationType TraceableFarmsAccreditationType
 }
 
-// TraceableFarmsAccreditationCompany is an auto generated low-level Go binding around an user-defined struct.
-type TraceableFarmsAccreditationCompany struct {
-	Accreditation TraceableFarmsAccreditation
-	Checker       string
-}
-
 // TraceableFarmsAccreditationType is an auto generated low-level Go binding around an user-defined struct.
 type TraceableFarmsAccreditationType struct {
-	Id   string
 	Name string
 }
 
 // TraceableFarmsBatch is an auto generated low-level Go binding around an user-defined struct.
 type TraceableFarmsBatch struct {
-	Id                 string
 	Number             string
 	Date               string
 	ProductName        string
@@ -57,6 +48,20 @@ type TraceableFarmsBatch struct {
 	ProductDescription string
 	ProductPhotoUrl    string
 	Company            TraceableFarmsCompany
+}
+
+// TraceableFarmsBatchFootprint is an auto generated low-level Go binding around an user-defined struct.
+type TraceableFarmsBatchFootprint struct {
+	FootprintType TraceableFarmsFootprintType
+	TotalValue    *big.Int
+}
+
+// TraceableFarmsBatchFootprintValue is an auto generated low-level Go binding around an user-defined struct.
+type TraceableFarmsBatchFootprintValue struct {
+	Description string
+	Value       *big.Int
+	CheckerHash string
+	CheckerUrl  string
 }
 
 // TraceableFarmsBatchOrigin is an auto generated low-level Go binding around an user-defined struct.
@@ -82,15 +87,33 @@ type TraceableFarmsCompany struct {
 	Consortium               TraceableFarmsConsortium
 }
 
+// TraceableFarmsCompanyAccreditation is an auto generated low-level Go binding around an user-defined struct.
+type TraceableFarmsCompanyAccreditation struct {
+	Accreditation TraceableFarmsAccreditation
+	CheckerHash   string
+	CheckerUrl    string
+}
+
+// TraceableFarmsCompanyFootprintReportability is an auto generated low-level Go binding around an user-defined struct.
+type TraceableFarmsCompanyFootprintReportability struct {
+	Company             TraceableFarmsCompany
+	FootprintType       TraceableFarmsFootprintType
+	FootprintReportType TraceableFarmsFootprintReportType
+	Description         string
+}
+
 // TraceableFarmsConsortium is an auto generated low-level Go binding around an user-defined struct.
 type TraceableFarmsConsortium struct {
-	Id   string
+	Name string
+}
+
+// TraceableFarmsFootprintReportType is an auto generated low-level Go binding around an user-defined struct.
+type TraceableFarmsFootprintReportType struct {
 	Name string
 }
 
 // TraceableFarmsFootprintType is an auto generated low-level Go binding around an user-defined struct.
 type TraceableFarmsFootprintType struct {
-	Id                    string
 	Name                  string
 	UnitMeasurementName   string
 	UnitMeasurementSymbol string
@@ -98,7 +121,7 @@ type TraceableFarmsFootprintType struct {
 
 // TraceableFarmsMetaData contains all meta data concerning the TraceableFarms contract.
 var TraceableFarmsMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"}],\"name\":\"getAccreditation\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.AccreditationType\",\"name\":\"accreditationType\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Accreditation\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"}],\"name\":\"getAccreditationCompany\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.AccreditationType\",\"name\":\"accreditationType\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Accreditation\",\"name\":\"accreditation\",\"type\":\"tuple\"},{\"internalType\":\"string\",\"name\":\"checker\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.AccreditationCompany[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"}],\"name\":\"getAccreditationType\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.AccreditationType\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"}],\"name\":\"getBatch\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"number\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"date\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"productName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"productVariety\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"productDescription\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"productPhotoUrl\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"bussinessName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"locationCoordinates\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"informationalResourceUrl\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.Consortium\",\"name\":\"consortium\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Company\",\"name\":\"company\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Batch\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_batchId\",\"type\":\"string\"}],\"name\":\"getBatchOrigin\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"locationCoordinates\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.BatchOrigin[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_batchId\",\"type\":\"string\"}],\"name\":\"getBatchProcess\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.BatchProcess[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"}],\"name\":\"getCompany\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"bussinessName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"locationCoordinates\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"informationalResourceUrl\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.Consortium\",\"name\":\"consortium\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Company\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"}],\"name\":\"getConsortium\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.Consortium\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"}],\"name\":\"getFootprintType\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"unitMeasurementName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"unitMeasurementSymbol\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.FootprintType\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_accreditationTypeId\",\"type\":\"string\"}],\"name\":\"setAccreditation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_accreditationId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_checker\",\"type\":\"string\"}],\"name\":\"setAccreditationCompany\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"setAccreditationType\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_number\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_date\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_productName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_productVariety\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_productDescription\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_productPhotoUrl\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_companyId\",\"type\":\"string\"}],\"name\":\"setBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_batchId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_locationCoordinates\",\"type\":\"string\"}],\"name\":\"setBatchOrigin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_batchId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"}],\"name\":\"setBatchProcess\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_bussinessName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_locationCoordinates\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_informationalResourceUrl\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_consortiumId\",\"type\":\"string\"}],\"name\":\"setCompany\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"setConsortium\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_unitMeasurementName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_unitMeasurementSymbol\",\"type\":\"string\"}],\"name\":\"setFootprintType\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"getAccreditation\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.AccreditationType\",\"name\":\"accreditationType\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Accreditation\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"getAccreditationType\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.AccreditationType\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_number\",\"type\":\"string\"}],\"name\":\"getBatch\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"number\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"date\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"productName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"productVariety\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"productDescription\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"productPhotoUrl\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"bussinessName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"locationCoordinates\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"informationalResourceUrl\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.Consortium\",\"name\":\"consortium\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Company\",\"name\":\"company\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Batch\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_batchNumber\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_processName\",\"type\":\"string\"}],\"name\":\"getBatchFootprint\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"unitMeasurementName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"unitMeasurementSymbol\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.FootprintType\",\"name\":\"footprintType\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"totalValue\",\"type\":\"uint256\"}],\"internalType\":\"structTraceableFarms.BatchFootprint[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_batchNumber\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_processName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_footprintTypeName\",\"type\":\"string\"}],\"name\":\"getBatchFootprintValue\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"checkerHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"checkerUrl\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.BatchFootprintValue[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_batchNumber\",\"type\":\"string\"}],\"name\":\"getBatchOrigin\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"locationCoordinates\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.BatchOrigin[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_batchNumber\",\"type\":\"string\"}],\"name\":\"getBatchProcess\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.BatchProcess[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"}],\"name\":\"getCompany\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"bussinessName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"locationCoordinates\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"informationalResourceUrl\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.Consortium\",\"name\":\"consortium\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Company\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"}],\"name\":\"getCompanyAccreditation\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.AccreditationType\",\"name\":\"accreditationType\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Accreditation\",\"name\":\"accreditation\",\"type\":\"tuple\"},{\"internalType\":\"string\",\"name\":\"checkerHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"checkerUrl\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.CompanyAccreditation[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_footprintTypeName\",\"type\":\"string\"}],\"name\":\"getCompanyFootprintReportability\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"bussinessName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"locationCoordinates\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"informationalResourceUrl\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.Consortium\",\"name\":\"consortium\",\"type\":\"tuple\"}],\"internalType\":\"structTraceableFarms.Company\",\"name\":\"company\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"unitMeasurementName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"unitMeasurementSymbol\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.FootprintType\",\"name\":\"footprintType\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.FootprintReportType\",\"name\":\"footprintReportType\",\"type\":\"tuple\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.CompanyFootprintReportability[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"getConsortium\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.Consortium\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"getFootprintReportType\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.FootprintReportType\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"getFootprintType\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"unitMeasurementName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"unitMeasurementSymbol\",\"type\":\"string\"}],\"internalType\":\"structTraceableFarms.FootprintType\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_accreditationTypeName\",\"type\":\"string\"}],\"name\":\"setAccreditation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"setAccreditationType\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_number\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_date\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_productName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_productVariety\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_productDescription\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_productPhotoUrl\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"}],\"name\":\"setBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_batchNumber\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_processName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_footprintTypeName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_totalValue\",\"type\":\"uint256\"}],\"name\":\"setBatchFootprint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_batchNumber\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_processName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_footprintTypeName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_checkerHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"checkerUrl\",\"type\":\"string\"}],\"name\":\"setBatchFootprintValue\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_batchNumber\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_locationCoordinates\",\"type\":\"string\"}],\"name\":\"setBatchOrigin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_companyNif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_batchNumber\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"}],\"name\":\"setBatchProcess\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_bussinessName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_location\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_locationCoordinates\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_informationalResourceUrl\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_consortiumName\",\"type\":\"string\"}],\"name\":\"setCompany\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_accreditationName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_checkerHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_checkerUrl\",\"type\":\"string\"}],\"name\":\"setCompanyAccreditation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_nif\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_footprintTypeName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_footprintReportTypeName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"}],\"name\":\"setCompanyFootprintReportability\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"setConsortium\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"setFootprintReportType\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_unitMeasurementName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_unitMeasurementSymbol\",\"type\":\"string\"}],\"name\":\"setFootprintType\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 // TraceableFarmsABI is the input ABI used to generate the binding from.
@@ -249,10 +272,10 @@ func (_TraceableFarms *TraceableFarmsTransactorRaw) Transact(opts *bind.Transact
 
 // GetAccreditation is a free data retrieval call binding the contract method 0x01384d8c.
 //
-// Solidity: function getAccreditation(string _id) view returns((string,string,(string,string)))
-func (_TraceableFarms *TraceableFarmsCaller) GetAccreditation(opts *bind.CallOpts, _id string) (TraceableFarmsAccreditation, error) {
+// Solidity: function getAccreditation(string _name) view returns((string,(string)))
+func (_TraceableFarms *TraceableFarmsCaller) GetAccreditation(opts *bind.CallOpts, _name string) (TraceableFarmsAccreditation, error) {
 	var out []interface{}
-	err := _TraceableFarms.contract.Call(opts, &out, "getAccreditation", _id)
+	err := _TraceableFarms.contract.Call(opts, &out, "getAccreditation", _name)
 
 	if err != nil {
 		return *new(TraceableFarmsAccreditation), err
@@ -266,55 +289,24 @@ func (_TraceableFarms *TraceableFarmsCaller) GetAccreditation(opts *bind.CallOpt
 
 // GetAccreditation is a free data retrieval call binding the contract method 0x01384d8c.
 //
-// Solidity: function getAccreditation(string _id) view returns((string,string,(string,string)))
-func (_TraceableFarms *TraceableFarmsSession) GetAccreditation(_id string) (TraceableFarmsAccreditation, error) {
-	return _TraceableFarms.Contract.GetAccreditation(&_TraceableFarms.CallOpts, _id)
+// Solidity: function getAccreditation(string _name) view returns((string,(string)))
+func (_TraceableFarms *TraceableFarmsSession) GetAccreditation(_name string) (TraceableFarmsAccreditation, error) {
+	return _TraceableFarms.Contract.GetAccreditation(&_TraceableFarms.CallOpts, _name)
 }
 
 // GetAccreditation is a free data retrieval call binding the contract method 0x01384d8c.
 //
-// Solidity: function getAccreditation(string _id) view returns((string,string,(string,string)))
-func (_TraceableFarms *TraceableFarmsCallerSession) GetAccreditation(_id string) (TraceableFarmsAccreditation, error) {
-	return _TraceableFarms.Contract.GetAccreditation(&_TraceableFarms.CallOpts, _id)
-}
-
-// GetAccreditationCompany is a free data retrieval call binding the contract method 0x460123bc.
-//
-// Solidity: function getAccreditationCompany(string _nif) view returns(((string,string,(string,string)),string)[])
-func (_TraceableFarms *TraceableFarmsCaller) GetAccreditationCompany(opts *bind.CallOpts, _nif string) ([]TraceableFarmsAccreditationCompany, error) {
-	var out []interface{}
-	err := _TraceableFarms.contract.Call(opts, &out, "getAccreditationCompany", _nif)
-
-	if err != nil {
-		return *new([]TraceableFarmsAccreditationCompany), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([]TraceableFarmsAccreditationCompany)).(*[]TraceableFarmsAccreditationCompany)
-
-	return out0, err
-
-}
-
-// GetAccreditationCompany is a free data retrieval call binding the contract method 0x460123bc.
-//
-// Solidity: function getAccreditationCompany(string _nif) view returns(((string,string,(string,string)),string)[])
-func (_TraceableFarms *TraceableFarmsSession) GetAccreditationCompany(_nif string) ([]TraceableFarmsAccreditationCompany, error) {
-	return _TraceableFarms.Contract.GetAccreditationCompany(&_TraceableFarms.CallOpts, _nif)
-}
-
-// GetAccreditationCompany is a free data retrieval call binding the contract method 0x460123bc.
-//
-// Solidity: function getAccreditationCompany(string _nif) view returns(((string,string,(string,string)),string)[])
-func (_TraceableFarms *TraceableFarmsCallerSession) GetAccreditationCompany(_nif string) ([]TraceableFarmsAccreditationCompany, error) {
-	return _TraceableFarms.Contract.GetAccreditationCompany(&_TraceableFarms.CallOpts, _nif)
+// Solidity: function getAccreditation(string _name) view returns((string,(string)))
+func (_TraceableFarms *TraceableFarmsCallerSession) GetAccreditation(_name string) (TraceableFarmsAccreditation, error) {
+	return _TraceableFarms.Contract.GetAccreditation(&_TraceableFarms.CallOpts, _name)
 }
 
 // GetAccreditationType is a free data retrieval call binding the contract method 0x10c74bd2.
 //
-// Solidity: function getAccreditationType(string _id) view returns((string,string))
-func (_TraceableFarms *TraceableFarmsCaller) GetAccreditationType(opts *bind.CallOpts, _id string) (TraceableFarmsAccreditationType, error) {
+// Solidity: function getAccreditationType(string _name) view returns((string))
+func (_TraceableFarms *TraceableFarmsCaller) GetAccreditationType(opts *bind.CallOpts, _name string) (TraceableFarmsAccreditationType, error) {
 	var out []interface{}
-	err := _TraceableFarms.contract.Call(opts, &out, "getAccreditationType", _id)
+	err := _TraceableFarms.contract.Call(opts, &out, "getAccreditationType", _name)
 
 	if err != nil {
 		return *new(TraceableFarmsAccreditationType), err
@@ -328,24 +320,24 @@ func (_TraceableFarms *TraceableFarmsCaller) GetAccreditationType(opts *bind.Cal
 
 // GetAccreditationType is a free data retrieval call binding the contract method 0x10c74bd2.
 //
-// Solidity: function getAccreditationType(string _id) view returns((string,string))
-func (_TraceableFarms *TraceableFarmsSession) GetAccreditationType(_id string) (TraceableFarmsAccreditationType, error) {
-	return _TraceableFarms.Contract.GetAccreditationType(&_TraceableFarms.CallOpts, _id)
+// Solidity: function getAccreditationType(string _name) view returns((string))
+func (_TraceableFarms *TraceableFarmsSession) GetAccreditationType(_name string) (TraceableFarmsAccreditationType, error) {
+	return _TraceableFarms.Contract.GetAccreditationType(&_TraceableFarms.CallOpts, _name)
 }
 
 // GetAccreditationType is a free data retrieval call binding the contract method 0x10c74bd2.
 //
-// Solidity: function getAccreditationType(string _id) view returns((string,string))
-func (_TraceableFarms *TraceableFarmsCallerSession) GetAccreditationType(_id string) (TraceableFarmsAccreditationType, error) {
-	return _TraceableFarms.Contract.GetAccreditationType(&_TraceableFarms.CallOpts, _id)
+// Solidity: function getAccreditationType(string _name) view returns((string))
+func (_TraceableFarms *TraceableFarmsCallerSession) GetAccreditationType(_name string) (TraceableFarmsAccreditationType, error) {
+	return _TraceableFarms.Contract.GetAccreditationType(&_TraceableFarms.CallOpts, _name)
 }
 
-// GetBatch is a free data retrieval call binding the contract method 0xf9ca4274.
+// GetBatch is a free data retrieval call binding the contract method 0x810bc2ea.
 //
-// Solidity: function getBatch(string _id) view returns((string,string,string,string,string,string,string,(string,string,string,string,string,(string,string))))
-func (_TraceableFarms *TraceableFarmsCaller) GetBatch(opts *bind.CallOpts, _id string) (TraceableFarmsBatch, error) {
+// Solidity: function getBatch(string _companyNif, string _number) view returns((string,string,string,string,string,string,(string,string,string,string,string,(string))))
+func (_TraceableFarms *TraceableFarmsCaller) GetBatch(opts *bind.CallOpts, _companyNif string, _number string) (TraceableFarmsBatch, error) {
 	var out []interface{}
-	err := _TraceableFarms.contract.Call(opts, &out, "getBatch", _id)
+	err := _TraceableFarms.contract.Call(opts, &out, "getBatch", _companyNif, _number)
 
 	if err != nil {
 		return *new(TraceableFarmsBatch), err
@@ -357,26 +349,88 @@ func (_TraceableFarms *TraceableFarmsCaller) GetBatch(opts *bind.CallOpts, _id s
 
 }
 
-// GetBatch is a free data retrieval call binding the contract method 0xf9ca4274.
+// GetBatch is a free data retrieval call binding the contract method 0x810bc2ea.
 //
-// Solidity: function getBatch(string _id) view returns((string,string,string,string,string,string,string,(string,string,string,string,string,(string,string))))
-func (_TraceableFarms *TraceableFarmsSession) GetBatch(_id string) (TraceableFarmsBatch, error) {
-	return _TraceableFarms.Contract.GetBatch(&_TraceableFarms.CallOpts, _id)
+// Solidity: function getBatch(string _companyNif, string _number) view returns((string,string,string,string,string,string,(string,string,string,string,string,(string))))
+func (_TraceableFarms *TraceableFarmsSession) GetBatch(_companyNif string, _number string) (TraceableFarmsBatch, error) {
+	return _TraceableFarms.Contract.GetBatch(&_TraceableFarms.CallOpts, _companyNif, _number)
 }
 
-// GetBatch is a free data retrieval call binding the contract method 0xf9ca4274.
+// GetBatch is a free data retrieval call binding the contract method 0x810bc2ea.
 //
-// Solidity: function getBatch(string _id) view returns((string,string,string,string,string,string,string,(string,string,string,string,string,(string,string))))
-func (_TraceableFarms *TraceableFarmsCallerSession) GetBatch(_id string) (TraceableFarmsBatch, error) {
-	return _TraceableFarms.Contract.GetBatch(&_TraceableFarms.CallOpts, _id)
+// Solidity: function getBatch(string _companyNif, string _number) view returns((string,string,string,string,string,string,(string,string,string,string,string,(string))))
+func (_TraceableFarms *TraceableFarmsCallerSession) GetBatch(_companyNif string, _number string) (TraceableFarmsBatch, error) {
+	return _TraceableFarms.Contract.GetBatch(&_TraceableFarms.CallOpts, _companyNif, _number)
 }
 
-// GetBatchOrigin is a free data retrieval call binding the contract method 0x765344c7.
+// GetBatchFootprint is a free data retrieval call binding the contract method 0xd1c173c2.
 //
-// Solidity: function getBatchOrigin(string _batchId) view returns((string,string,string)[])
-func (_TraceableFarms *TraceableFarmsCaller) GetBatchOrigin(opts *bind.CallOpts, _batchId string) ([]TraceableFarmsBatchOrigin, error) {
+// Solidity: function getBatchFootprint(string _companyNif, string _batchNumber, string _processName) view returns(((string,string,string),uint256)[])
+func (_TraceableFarms *TraceableFarmsCaller) GetBatchFootprint(opts *bind.CallOpts, _companyNif string, _batchNumber string, _processName string) ([]TraceableFarmsBatchFootprint, error) {
 	var out []interface{}
-	err := _TraceableFarms.contract.Call(opts, &out, "getBatchOrigin", _batchId)
+	err := _TraceableFarms.contract.Call(opts, &out, "getBatchFootprint", _companyNif, _batchNumber, _processName)
+
+	if err != nil {
+		return *new([]TraceableFarmsBatchFootprint), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([]TraceableFarmsBatchFootprint)).(*[]TraceableFarmsBatchFootprint)
+
+	return out0, err
+
+}
+
+// GetBatchFootprint is a free data retrieval call binding the contract method 0xd1c173c2.
+//
+// Solidity: function getBatchFootprint(string _companyNif, string _batchNumber, string _processName) view returns(((string,string,string),uint256)[])
+func (_TraceableFarms *TraceableFarmsSession) GetBatchFootprint(_companyNif string, _batchNumber string, _processName string) ([]TraceableFarmsBatchFootprint, error) {
+	return _TraceableFarms.Contract.GetBatchFootprint(&_TraceableFarms.CallOpts, _companyNif, _batchNumber, _processName)
+}
+
+// GetBatchFootprint is a free data retrieval call binding the contract method 0xd1c173c2.
+//
+// Solidity: function getBatchFootprint(string _companyNif, string _batchNumber, string _processName) view returns(((string,string,string),uint256)[])
+func (_TraceableFarms *TraceableFarmsCallerSession) GetBatchFootprint(_companyNif string, _batchNumber string, _processName string) ([]TraceableFarmsBatchFootprint, error) {
+	return _TraceableFarms.Contract.GetBatchFootprint(&_TraceableFarms.CallOpts, _companyNif, _batchNumber, _processName)
+}
+
+// GetBatchFootprintValue is a free data retrieval call binding the contract method 0x465af2ae.
+//
+// Solidity: function getBatchFootprintValue(string _companyNif, string _batchNumber, string _processName, string _footprintTypeName) view returns((string,uint256,string,string)[])
+func (_TraceableFarms *TraceableFarmsCaller) GetBatchFootprintValue(opts *bind.CallOpts, _companyNif string, _batchNumber string, _processName string, _footprintTypeName string) ([]TraceableFarmsBatchFootprintValue, error) {
+	var out []interface{}
+	err := _TraceableFarms.contract.Call(opts, &out, "getBatchFootprintValue", _companyNif, _batchNumber, _processName, _footprintTypeName)
+
+	if err != nil {
+		return *new([]TraceableFarmsBatchFootprintValue), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([]TraceableFarmsBatchFootprintValue)).(*[]TraceableFarmsBatchFootprintValue)
+
+	return out0, err
+
+}
+
+// GetBatchFootprintValue is a free data retrieval call binding the contract method 0x465af2ae.
+//
+// Solidity: function getBatchFootprintValue(string _companyNif, string _batchNumber, string _processName, string _footprintTypeName) view returns((string,uint256,string,string)[])
+func (_TraceableFarms *TraceableFarmsSession) GetBatchFootprintValue(_companyNif string, _batchNumber string, _processName string, _footprintTypeName string) ([]TraceableFarmsBatchFootprintValue, error) {
+	return _TraceableFarms.Contract.GetBatchFootprintValue(&_TraceableFarms.CallOpts, _companyNif, _batchNumber, _processName, _footprintTypeName)
+}
+
+// GetBatchFootprintValue is a free data retrieval call binding the contract method 0x465af2ae.
+//
+// Solidity: function getBatchFootprintValue(string _companyNif, string _batchNumber, string _processName, string _footprintTypeName) view returns((string,uint256,string,string)[])
+func (_TraceableFarms *TraceableFarmsCallerSession) GetBatchFootprintValue(_companyNif string, _batchNumber string, _processName string, _footprintTypeName string) ([]TraceableFarmsBatchFootprintValue, error) {
+	return _TraceableFarms.Contract.GetBatchFootprintValue(&_TraceableFarms.CallOpts, _companyNif, _batchNumber, _processName, _footprintTypeName)
+}
+
+// GetBatchOrigin is a free data retrieval call binding the contract method 0x6f8e5aa1.
+//
+// Solidity: function getBatchOrigin(string _companyNif, string _batchNumber) view returns((string,string,string)[])
+func (_TraceableFarms *TraceableFarmsCaller) GetBatchOrigin(opts *bind.CallOpts, _companyNif string, _batchNumber string) ([]TraceableFarmsBatchOrigin, error) {
+	var out []interface{}
+	err := _TraceableFarms.contract.Call(opts, &out, "getBatchOrigin", _companyNif, _batchNumber)
 
 	if err != nil {
 		return *new([]TraceableFarmsBatchOrigin), err
@@ -388,26 +442,26 @@ func (_TraceableFarms *TraceableFarmsCaller) GetBatchOrigin(opts *bind.CallOpts,
 
 }
 
-// GetBatchOrigin is a free data retrieval call binding the contract method 0x765344c7.
+// GetBatchOrigin is a free data retrieval call binding the contract method 0x6f8e5aa1.
 //
-// Solidity: function getBatchOrigin(string _batchId) view returns((string,string,string)[])
-func (_TraceableFarms *TraceableFarmsSession) GetBatchOrigin(_batchId string) ([]TraceableFarmsBatchOrigin, error) {
-	return _TraceableFarms.Contract.GetBatchOrigin(&_TraceableFarms.CallOpts, _batchId)
+// Solidity: function getBatchOrigin(string _companyNif, string _batchNumber) view returns((string,string,string)[])
+func (_TraceableFarms *TraceableFarmsSession) GetBatchOrigin(_companyNif string, _batchNumber string) ([]TraceableFarmsBatchOrigin, error) {
+	return _TraceableFarms.Contract.GetBatchOrigin(&_TraceableFarms.CallOpts, _companyNif, _batchNumber)
 }
 
-// GetBatchOrigin is a free data retrieval call binding the contract method 0x765344c7.
+// GetBatchOrigin is a free data retrieval call binding the contract method 0x6f8e5aa1.
 //
-// Solidity: function getBatchOrigin(string _batchId) view returns((string,string,string)[])
-func (_TraceableFarms *TraceableFarmsCallerSession) GetBatchOrigin(_batchId string) ([]TraceableFarmsBatchOrigin, error) {
-	return _TraceableFarms.Contract.GetBatchOrigin(&_TraceableFarms.CallOpts, _batchId)
+// Solidity: function getBatchOrigin(string _companyNif, string _batchNumber) view returns((string,string,string)[])
+func (_TraceableFarms *TraceableFarmsCallerSession) GetBatchOrigin(_companyNif string, _batchNumber string) ([]TraceableFarmsBatchOrigin, error) {
+	return _TraceableFarms.Contract.GetBatchOrigin(&_TraceableFarms.CallOpts, _companyNif, _batchNumber)
 }
 
-// GetBatchProcess is a free data retrieval call binding the contract method 0x3e1c21c2.
+// GetBatchProcess is a free data retrieval call binding the contract method 0xa6fc05ee.
 //
-// Solidity: function getBatchProcess(string _batchId) view returns((string,string)[])
-func (_TraceableFarms *TraceableFarmsCaller) GetBatchProcess(opts *bind.CallOpts, _batchId string) ([]TraceableFarmsBatchProcess, error) {
+// Solidity: function getBatchProcess(string _companyNif, string _batchNumber) view returns((string,string)[])
+func (_TraceableFarms *TraceableFarmsCaller) GetBatchProcess(opts *bind.CallOpts, _companyNif string, _batchNumber string) ([]TraceableFarmsBatchProcess, error) {
 	var out []interface{}
-	err := _TraceableFarms.contract.Call(opts, &out, "getBatchProcess", _batchId)
+	err := _TraceableFarms.contract.Call(opts, &out, "getBatchProcess", _companyNif, _batchNumber)
 
 	if err != nil {
 		return *new([]TraceableFarmsBatchProcess), err
@@ -419,23 +473,23 @@ func (_TraceableFarms *TraceableFarmsCaller) GetBatchProcess(opts *bind.CallOpts
 
 }
 
-// GetBatchProcess is a free data retrieval call binding the contract method 0x3e1c21c2.
+// GetBatchProcess is a free data retrieval call binding the contract method 0xa6fc05ee.
 //
-// Solidity: function getBatchProcess(string _batchId) view returns((string,string)[])
-func (_TraceableFarms *TraceableFarmsSession) GetBatchProcess(_batchId string) ([]TraceableFarmsBatchProcess, error) {
-	return _TraceableFarms.Contract.GetBatchProcess(&_TraceableFarms.CallOpts, _batchId)
+// Solidity: function getBatchProcess(string _companyNif, string _batchNumber) view returns((string,string)[])
+func (_TraceableFarms *TraceableFarmsSession) GetBatchProcess(_companyNif string, _batchNumber string) ([]TraceableFarmsBatchProcess, error) {
+	return _TraceableFarms.Contract.GetBatchProcess(&_TraceableFarms.CallOpts, _companyNif, _batchNumber)
 }
 
-// GetBatchProcess is a free data retrieval call binding the contract method 0x3e1c21c2.
+// GetBatchProcess is a free data retrieval call binding the contract method 0xa6fc05ee.
 //
-// Solidity: function getBatchProcess(string _batchId) view returns((string,string)[])
-func (_TraceableFarms *TraceableFarmsCallerSession) GetBatchProcess(_batchId string) ([]TraceableFarmsBatchProcess, error) {
-	return _TraceableFarms.Contract.GetBatchProcess(&_TraceableFarms.CallOpts, _batchId)
+// Solidity: function getBatchProcess(string _companyNif, string _batchNumber) view returns((string,string)[])
+func (_TraceableFarms *TraceableFarmsCallerSession) GetBatchProcess(_companyNif string, _batchNumber string) ([]TraceableFarmsBatchProcess, error) {
+	return _TraceableFarms.Contract.GetBatchProcess(&_TraceableFarms.CallOpts, _companyNif, _batchNumber)
 }
 
 // GetCompany is a free data retrieval call binding the contract method 0xb24a4e52.
 //
-// Solidity: function getCompany(string _nif) view returns((string,string,string,string,string,(string,string)))
+// Solidity: function getCompany(string _nif) view returns((string,string,string,string,string,(string)))
 func (_TraceableFarms *TraceableFarmsCaller) GetCompany(opts *bind.CallOpts, _nif string) (TraceableFarmsCompany, error) {
 	var out []interface{}
 	err := _TraceableFarms.contract.Call(opts, &out, "getCompany", _nif)
@@ -452,24 +506,86 @@ func (_TraceableFarms *TraceableFarmsCaller) GetCompany(opts *bind.CallOpts, _ni
 
 // GetCompany is a free data retrieval call binding the contract method 0xb24a4e52.
 //
-// Solidity: function getCompany(string _nif) view returns((string,string,string,string,string,(string,string)))
+// Solidity: function getCompany(string _nif) view returns((string,string,string,string,string,(string)))
 func (_TraceableFarms *TraceableFarmsSession) GetCompany(_nif string) (TraceableFarmsCompany, error) {
 	return _TraceableFarms.Contract.GetCompany(&_TraceableFarms.CallOpts, _nif)
 }
 
 // GetCompany is a free data retrieval call binding the contract method 0xb24a4e52.
 //
-// Solidity: function getCompany(string _nif) view returns((string,string,string,string,string,(string,string)))
+// Solidity: function getCompany(string _nif) view returns((string,string,string,string,string,(string)))
 func (_TraceableFarms *TraceableFarmsCallerSession) GetCompany(_nif string) (TraceableFarmsCompany, error) {
 	return _TraceableFarms.Contract.GetCompany(&_TraceableFarms.CallOpts, _nif)
 }
 
+// GetCompanyAccreditation is a free data retrieval call binding the contract method 0x78f2ea6f.
+//
+// Solidity: function getCompanyAccreditation(string _nif) view returns(((string,(string)),string,string)[])
+func (_TraceableFarms *TraceableFarmsCaller) GetCompanyAccreditation(opts *bind.CallOpts, _nif string) ([]TraceableFarmsCompanyAccreditation, error) {
+	var out []interface{}
+	err := _TraceableFarms.contract.Call(opts, &out, "getCompanyAccreditation", _nif)
+
+	if err != nil {
+		return *new([]TraceableFarmsCompanyAccreditation), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([]TraceableFarmsCompanyAccreditation)).(*[]TraceableFarmsCompanyAccreditation)
+
+	return out0, err
+
+}
+
+// GetCompanyAccreditation is a free data retrieval call binding the contract method 0x78f2ea6f.
+//
+// Solidity: function getCompanyAccreditation(string _nif) view returns(((string,(string)),string,string)[])
+func (_TraceableFarms *TraceableFarmsSession) GetCompanyAccreditation(_nif string) ([]TraceableFarmsCompanyAccreditation, error) {
+	return _TraceableFarms.Contract.GetCompanyAccreditation(&_TraceableFarms.CallOpts, _nif)
+}
+
+// GetCompanyAccreditation is a free data retrieval call binding the contract method 0x78f2ea6f.
+//
+// Solidity: function getCompanyAccreditation(string _nif) view returns(((string,(string)),string,string)[])
+func (_TraceableFarms *TraceableFarmsCallerSession) GetCompanyAccreditation(_nif string) ([]TraceableFarmsCompanyAccreditation, error) {
+	return _TraceableFarms.Contract.GetCompanyAccreditation(&_TraceableFarms.CallOpts, _nif)
+}
+
+// GetCompanyFootprintReportability is a free data retrieval call binding the contract method 0xb5b14f23.
+//
+// Solidity: function getCompanyFootprintReportability(string _nif, string _footprintTypeName) view returns(((string,string,string,string,string,(string)),(string,string,string),(string),string)[])
+func (_TraceableFarms *TraceableFarmsCaller) GetCompanyFootprintReportability(opts *bind.CallOpts, _nif string, _footprintTypeName string) ([]TraceableFarmsCompanyFootprintReportability, error) {
+	var out []interface{}
+	err := _TraceableFarms.contract.Call(opts, &out, "getCompanyFootprintReportability", _nif, _footprintTypeName)
+
+	if err != nil {
+		return *new([]TraceableFarmsCompanyFootprintReportability), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([]TraceableFarmsCompanyFootprintReportability)).(*[]TraceableFarmsCompanyFootprintReportability)
+
+	return out0, err
+
+}
+
+// GetCompanyFootprintReportability is a free data retrieval call binding the contract method 0xb5b14f23.
+//
+// Solidity: function getCompanyFootprintReportability(string _nif, string _footprintTypeName) view returns(((string,string,string,string,string,(string)),(string,string,string),(string),string)[])
+func (_TraceableFarms *TraceableFarmsSession) GetCompanyFootprintReportability(_nif string, _footprintTypeName string) ([]TraceableFarmsCompanyFootprintReportability, error) {
+	return _TraceableFarms.Contract.GetCompanyFootprintReportability(&_TraceableFarms.CallOpts, _nif, _footprintTypeName)
+}
+
+// GetCompanyFootprintReportability is a free data retrieval call binding the contract method 0xb5b14f23.
+//
+// Solidity: function getCompanyFootprintReportability(string _nif, string _footprintTypeName) view returns(((string,string,string,string,string,(string)),(string,string,string),(string),string)[])
+func (_TraceableFarms *TraceableFarmsCallerSession) GetCompanyFootprintReportability(_nif string, _footprintTypeName string) ([]TraceableFarmsCompanyFootprintReportability, error) {
+	return _TraceableFarms.Contract.GetCompanyFootprintReportability(&_TraceableFarms.CallOpts, _nif, _footprintTypeName)
+}
+
 // GetConsortium is a free data retrieval call binding the contract method 0x86dae8ee.
 //
-// Solidity: function getConsortium(string _id) view returns((string,string))
-func (_TraceableFarms *TraceableFarmsCaller) GetConsortium(opts *bind.CallOpts, _id string) (TraceableFarmsConsortium, error) {
+// Solidity: function getConsortium(string _name) view returns((string))
+func (_TraceableFarms *TraceableFarmsCaller) GetConsortium(opts *bind.CallOpts, _name string) (TraceableFarmsConsortium, error) {
 	var out []interface{}
-	err := _TraceableFarms.contract.Call(opts, &out, "getConsortium", _id)
+	err := _TraceableFarms.contract.Call(opts, &out, "getConsortium", _name)
 
 	if err != nil {
 		return *new(TraceableFarmsConsortium), err
@@ -483,24 +599,55 @@ func (_TraceableFarms *TraceableFarmsCaller) GetConsortium(opts *bind.CallOpts, 
 
 // GetConsortium is a free data retrieval call binding the contract method 0x86dae8ee.
 //
-// Solidity: function getConsortium(string _id) view returns((string,string))
-func (_TraceableFarms *TraceableFarmsSession) GetConsortium(_id string) (TraceableFarmsConsortium, error) {
-	return _TraceableFarms.Contract.GetConsortium(&_TraceableFarms.CallOpts, _id)
+// Solidity: function getConsortium(string _name) view returns((string))
+func (_TraceableFarms *TraceableFarmsSession) GetConsortium(_name string) (TraceableFarmsConsortium, error) {
+	return _TraceableFarms.Contract.GetConsortium(&_TraceableFarms.CallOpts, _name)
 }
 
 // GetConsortium is a free data retrieval call binding the contract method 0x86dae8ee.
 //
-// Solidity: function getConsortium(string _id) view returns((string,string))
-func (_TraceableFarms *TraceableFarmsCallerSession) GetConsortium(_id string) (TraceableFarmsConsortium, error) {
-	return _TraceableFarms.Contract.GetConsortium(&_TraceableFarms.CallOpts, _id)
+// Solidity: function getConsortium(string _name) view returns((string))
+func (_TraceableFarms *TraceableFarmsCallerSession) GetConsortium(_name string) (TraceableFarmsConsortium, error) {
+	return _TraceableFarms.Contract.GetConsortium(&_TraceableFarms.CallOpts, _name)
+}
+
+// GetFootprintReportType is a free data retrieval call binding the contract method 0x26f0d89b.
+//
+// Solidity: function getFootprintReportType(string _name) view returns((string))
+func (_TraceableFarms *TraceableFarmsCaller) GetFootprintReportType(opts *bind.CallOpts, _name string) (TraceableFarmsFootprintReportType, error) {
+	var out []interface{}
+	err := _TraceableFarms.contract.Call(opts, &out, "getFootprintReportType", _name)
+
+	if err != nil {
+		return *new(TraceableFarmsFootprintReportType), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(TraceableFarmsFootprintReportType)).(*TraceableFarmsFootprintReportType)
+
+	return out0, err
+
+}
+
+// GetFootprintReportType is a free data retrieval call binding the contract method 0x26f0d89b.
+//
+// Solidity: function getFootprintReportType(string _name) view returns((string))
+func (_TraceableFarms *TraceableFarmsSession) GetFootprintReportType(_name string) (TraceableFarmsFootprintReportType, error) {
+	return _TraceableFarms.Contract.GetFootprintReportType(&_TraceableFarms.CallOpts, _name)
+}
+
+// GetFootprintReportType is a free data retrieval call binding the contract method 0x26f0d89b.
+//
+// Solidity: function getFootprintReportType(string _name) view returns((string))
+func (_TraceableFarms *TraceableFarmsCallerSession) GetFootprintReportType(_name string) (TraceableFarmsFootprintReportType, error) {
+	return _TraceableFarms.Contract.GetFootprintReportType(&_TraceableFarms.CallOpts, _name)
 }
 
 // GetFootprintType is a free data retrieval call binding the contract method 0x0ba33f01.
 //
-// Solidity: function getFootprintType(string _id) view returns((string,string,string,string))
-func (_TraceableFarms *TraceableFarmsCaller) GetFootprintType(opts *bind.CallOpts, _id string) (TraceableFarmsFootprintType, error) {
+// Solidity: function getFootprintType(string _name) view returns((string,string,string))
+func (_TraceableFarms *TraceableFarmsCaller) GetFootprintType(opts *bind.CallOpts, _name string) (TraceableFarmsFootprintType, error) {
 	var out []interface{}
-	err := _TraceableFarms.contract.Call(opts, &out, "getFootprintType", _id)
+	err := _TraceableFarms.contract.Call(opts, &out, "getFootprintType", _name)
 
 	if err != nil {
 		return *new(TraceableFarmsFootprintType), err
@@ -514,16 +661,16 @@ func (_TraceableFarms *TraceableFarmsCaller) GetFootprintType(opts *bind.CallOpt
 
 // GetFootprintType is a free data retrieval call binding the contract method 0x0ba33f01.
 //
-// Solidity: function getFootprintType(string _id) view returns((string,string,string,string))
-func (_TraceableFarms *TraceableFarmsSession) GetFootprintType(_id string) (TraceableFarmsFootprintType, error) {
-	return _TraceableFarms.Contract.GetFootprintType(&_TraceableFarms.CallOpts, _id)
+// Solidity: function getFootprintType(string _name) view returns((string,string,string))
+func (_TraceableFarms *TraceableFarmsSession) GetFootprintType(_name string) (TraceableFarmsFootprintType, error) {
+	return _TraceableFarms.Contract.GetFootprintType(&_TraceableFarms.CallOpts, _name)
 }
 
 // GetFootprintType is a free data retrieval call binding the contract method 0x0ba33f01.
 //
-// Solidity: function getFootprintType(string _id) view returns((string,string,string,string))
-func (_TraceableFarms *TraceableFarmsCallerSession) GetFootprintType(_id string) (TraceableFarmsFootprintType, error) {
-	return _TraceableFarms.Contract.GetFootprintType(&_TraceableFarms.CallOpts, _id)
+// Solidity: function getFootprintType(string _name) view returns((string,string,string))
+func (_TraceableFarms *TraceableFarmsCallerSession) GetFootprintType(_name string) (TraceableFarmsFootprintType, error) {
+	return _TraceableFarms.Contract.GetFootprintType(&_TraceableFarms.CallOpts, _name)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
@@ -557,191 +704,275 @@ func (_TraceableFarms *TraceableFarmsCallerSession) Owner() (common.Address, err
 	return _TraceableFarms.Contract.Owner(&_TraceableFarms.CallOpts)
 }
 
-// SetAccreditation is a paid mutator transaction binding the contract method 0xd2b9c9d7.
+// SetAccreditation is a paid mutator transaction binding the contract method 0x926f2d75.
 //
-// Solidity: function setAccreditation(string _id, string _name, string _accreditationTypeId) returns()
-func (_TraceableFarms *TraceableFarmsTransactor) SetAccreditation(opts *bind.TransactOpts, _id string, _name string, _accreditationTypeId string) (*types.Transaction, error) {
-	return _TraceableFarms.contract.Transact(opts, "setAccreditation", _id, _name, _accreditationTypeId)
+// Solidity: function setAccreditation(string _name, string _accreditationTypeName) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetAccreditation(opts *bind.TransactOpts, _name string, _accreditationTypeName string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setAccreditation", _name, _accreditationTypeName)
 }
 
-// SetAccreditation is a paid mutator transaction binding the contract method 0xd2b9c9d7.
+// SetAccreditation is a paid mutator transaction binding the contract method 0x926f2d75.
 //
-// Solidity: function setAccreditation(string _id, string _name, string _accreditationTypeId) returns()
-func (_TraceableFarms *TraceableFarmsSession) SetAccreditation(_id string, _name string, _accreditationTypeId string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetAccreditation(&_TraceableFarms.TransactOpts, _id, _name, _accreditationTypeId)
+// Solidity: function setAccreditation(string _name, string _accreditationTypeName) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetAccreditation(_name string, _accreditationTypeName string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetAccreditation(&_TraceableFarms.TransactOpts, _name, _accreditationTypeName)
 }
 
-// SetAccreditation is a paid mutator transaction binding the contract method 0xd2b9c9d7.
+// SetAccreditation is a paid mutator transaction binding the contract method 0x926f2d75.
 //
-// Solidity: function setAccreditation(string _id, string _name, string _accreditationTypeId) returns()
-func (_TraceableFarms *TraceableFarmsTransactorSession) SetAccreditation(_id string, _name string, _accreditationTypeId string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetAccreditation(&_TraceableFarms.TransactOpts, _id, _name, _accreditationTypeId)
+// Solidity: function setAccreditation(string _name, string _accreditationTypeName) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetAccreditation(_name string, _accreditationTypeName string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetAccreditation(&_TraceableFarms.TransactOpts, _name, _accreditationTypeName)
 }
 
-// SetAccreditationCompany is a paid mutator transaction binding the contract method 0x838e8e78.
+// SetAccreditationType is a paid mutator transaction binding the contract method 0xaa2c57f3.
 //
-// Solidity: function setAccreditationCompany(string _nif, string _accreditationId, string _checker) returns()
-func (_TraceableFarms *TraceableFarmsTransactor) SetAccreditationCompany(opts *bind.TransactOpts, _nif string, _accreditationId string, _checker string) (*types.Transaction, error) {
-	return _TraceableFarms.contract.Transact(opts, "setAccreditationCompany", _nif, _accreditationId, _checker)
+// Solidity: function setAccreditationType(string _name) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetAccreditationType(opts *bind.TransactOpts, _name string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setAccreditationType", _name)
 }
 
-// SetAccreditationCompany is a paid mutator transaction binding the contract method 0x838e8e78.
+// SetAccreditationType is a paid mutator transaction binding the contract method 0xaa2c57f3.
 //
-// Solidity: function setAccreditationCompany(string _nif, string _accreditationId, string _checker) returns()
-func (_TraceableFarms *TraceableFarmsSession) SetAccreditationCompany(_nif string, _accreditationId string, _checker string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetAccreditationCompany(&_TraceableFarms.TransactOpts, _nif, _accreditationId, _checker)
+// Solidity: function setAccreditationType(string _name) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetAccreditationType(_name string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetAccreditationType(&_TraceableFarms.TransactOpts, _name)
 }
 
-// SetAccreditationCompany is a paid mutator transaction binding the contract method 0x838e8e78.
+// SetAccreditationType is a paid mutator transaction binding the contract method 0xaa2c57f3.
 //
-// Solidity: function setAccreditationCompany(string _nif, string _accreditationId, string _checker) returns()
-func (_TraceableFarms *TraceableFarmsTransactorSession) SetAccreditationCompany(_nif string, _accreditationId string, _checker string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetAccreditationCompany(&_TraceableFarms.TransactOpts, _nif, _accreditationId, _checker)
+// Solidity: function setAccreditationType(string _name) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetAccreditationType(_name string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetAccreditationType(&_TraceableFarms.TransactOpts, _name)
 }
 
-// SetAccreditationType is a paid mutator transaction binding the contract method 0x09b7ba2e.
+// SetBatch is a paid mutator transaction binding the contract method 0x52289e60.
 //
-// Solidity: function setAccreditationType(string _id, string _name) returns()
-func (_TraceableFarms *TraceableFarmsTransactor) SetAccreditationType(opts *bind.TransactOpts, _id string, _name string) (*types.Transaction, error) {
-	return _TraceableFarms.contract.Transact(opts, "setAccreditationType", _id, _name)
+// Solidity: function setBatch(string _number, string _date, string _productName, string _productVariety, string _productDescription, string _productPhotoUrl, string _companyNif) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetBatch(opts *bind.TransactOpts, _number string, _date string, _productName string, _productVariety string, _productDescription string, _productPhotoUrl string, _companyNif string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setBatch", _number, _date, _productName, _productVariety, _productDescription, _productPhotoUrl, _companyNif)
 }
 
-// SetAccreditationType is a paid mutator transaction binding the contract method 0x09b7ba2e.
+// SetBatch is a paid mutator transaction binding the contract method 0x52289e60.
 //
-// Solidity: function setAccreditationType(string _id, string _name) returns()
-func (_TraceableFarms *TraceableFarmsSession) SetAccreditationType(_id string, _name string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetAccreditationType(&_TraceableFarms.TransactOpts, _id, _name)
+// Solidity: function setBatch(string _number, string _date, string _productName, string _productVariety, string _productDescription, string _productPhotoUrl, string _companyNif) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetBatch(_number string, _date string, _productName string, _productVariety string, _productDescription string, _productPhotoUrl string, _companyNif string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatch(&_TraceableFarms.TransactOpts, _number, _date, _productName, _productVariety, _productDescription, _productPhotoUrl, _companyNif)
 }
 
-// SetAccreditationType is a paid mutator transaction binding the contract method 0x09b7ba2e.
+// SetBatch is a paid mutator transaction binding the contract method 0x52289e60.
 //
-// Solidity: function setAccreditationType(string _id, string _name) returns()
-func (_TraceableFarms *TraceableFarmsTransactorSession) SetAccreditationType(_id string, _name string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetAccreditationType(&_TraceableFarms.TransactOpts, _id, _name)
+// Solidity: function setBatch(string _number, string _date, string _productName, string _productVariety, string _productDescription, string _productPhotoUrl, string _companyNif) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetBatch(_number string, _date string, _productName string, _productVariety string, _productDescription string, _productPhotoUrl string, _companyNif string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatch(&_TraceableFarms.TransactOpts, _number, _date, _productName, _productVariety, _productDescription, _productPhotoUrl, _companyNif)
 }
 
-// SetBatch is a paid mutator transaction binding the contract method 0x721aaebe.
+// SetBatchFootprint is a paid mutator transaction binding the contract method 0xec1f6129.
 //
-// Solidity: function setBatch(string _id, string _number, string _date, string _productName, string _productVariety, string _productDescription, string _productPhotoUrl, string _companyId) returns()
-func (_TraceableFarms *TraceableFarmsTransactor) SetBatch(opts *bind.TransactOpts, _id string, _number string, _date string, _productName string, _productVariety string, _productDescription string, _productPhotoUrl string, _companyId string) (*types.Transaction, error) {
-	return _TraceableFarms.contract.Transact(opts, "setBatch", _id, _number, _date, _productName, _productVariety, _productDescription, _productPhotoUrl, _companyId)
+// Solidity: function setBatchFootprint(string _companyNif, string _batchNumber, string _processName, string _footprintTypeName, uint256 _totalValue) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetBatchFootprint(opts *bind.TransactOpts, _companyNif string, _batchNumber string, _processName string, _footprintTypeName string, _totalValue *big.Int) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setBatchFootprint", _companyNif, _batchNumber, _processName, _footprintTypeName, _totalValue)
 }
 
-// SetBatch is a paid mutator transaction binding the contract method 0x721aaebe.
+// SetBatchFootprint is a paid mutator transaction binding the contract method 0xec1f6129.
 //
-// Solidity: function setBatch(string _id, string _number, string _date, string _productName, string _productVariety, string _productDescription, string _productPhotoUrl, string _companyId) returns()
-func (_TraceableFarms *TraceableFarmsSession) SetBatch(_id string, _number string, _date string, _productName string, _productVariety string, _productDescription string, _productPhotoUrl string, _companyId string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetBatch(&_TraceableFarms.TransactOpts, _id, _number, _date, _productName, _productVariety, _productDescription, _productPhotoUrl, _companyId)
+// Solidity: function setBatchFootprint(string _companyNif, string _batchNumber, string _processName, string _footprintTypeName, uint256 _totalValue) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetBatchFootprint(_companyNif string, _batchNumber string, _processName string, _footprintTypeName string, _totalValue *big.Int) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatchFootprint(&_TraceableFarms.TransactOpts, _companyNif, _batchNumber, _processName, _footprintTypeName, _totalValue)
 }
 
-// SetBatch is a paid mutator transaction binding the contract method 0x721aaebe.
+// SetBatchFootprint is a paid mutator transaction binding the contract method 0xec1f6129.
 //
-// Solidity: function setBatch(string _id, string _number, string _date, string _productName, string _productVariety, string _productDescription, string _productPhotoUrl, string _companyId) returns()
-func (_TraceableFarms *TraceableFarmsTransactorSession) SetBatch(_id string, _number string, _date string, _productName string, _productVariety string, _productDescription string, _productPhotoUrl string, _companyId string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetBatch(&_TraceableFarms.TransactOpts, _id, _number, _date, _productName, _productVariety, _productDescription, _productPhotoUrl, _companyId)
+// Solidity: function setBatchFootprint(string _companyNif, string _batchNumber, string _processName, string _footprintTypeName, uint256 _totalValue) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetBatchFootprint(_companyNif string, _batchNumber string, _processName string, _footprintTypeName string, _totalValue *big.Int) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatchFootprint(&_TraceableFarms.TransactOpts, _companyNif, _batchNumber, _processName, _footprintTypeName, _totalValue)
 }
 
-// SetBatchOrigin is a paid mutator transaction binding the contract method 0xd03a82ee.
+// SetBatchFootprintValue is a paid mutator transaction binding the contract method 0x82339705.
 //
-// Solidity: function setBatchOrigin(string _batchId, string _description, string _location, string _locationCoordinates) returns()
-func (_TraceableFarms *TraceableFarmsTransactor) SetBatchOrigin(opts *bind.TransactOpts, _batchId string, _description string, _location string, _locationCoordinates string) (*types.Transaction, error) {
-	return _TraceableFarms.contract.Transact(opts, "setBatchOrigin", _batchId, _description, _location, _locationCoordinates)
+// Solidity: function setBatchFootprintValue(string _companyNif, string _batchNumber, string _processName, string _footprintTypeName, string _description, uint256 _value, string _checkerHash, string checkerUrl) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetBatchFootprintValue(opts *bind.TransactOpts, _companyNif string, _batchNumber string, _processName string, _footprintTypeName string, _description string, _value *big.Int, _checkerHash string, checkerUrl string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setBatchFootprintValue", _companyNif, _batchNumber, _processName, _footprintTypeName, _description, _value, _checkerHash, checkerUrl)
 }
 
-// SetBatchOrigin is a paid mutator transaction binding the contract method 0xd03a82ee.
+// SetBatchFootprintValue is a paid mutator transaction binding the contract method 0x82339705.
 //
-// Solidity: function setBatchOrigin(string _batchId, string _description, string _location, string _locationCoordinates) returns()
-func (_TraceableFarms *TraceableFarmsSession) SetBatchOrigin(_batchId string, _description string, _location string, _locationCoordinates string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetBatchOrigin(&_TraceableFarms.TransactOpts, _batchId, _description, _location, _locationCoordinates)
+// Solidity: function setBatchFootprintValue(string _companyNif, string _batchNumber, string _processName, string _footprintTypeName, string _description, uint256 _value, string _checkerHash, string checkerUrl) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetBatchFootprintValue(_companyNif string, _batchNumber string, _processName string, _footprintTypeName string, _description string, _value *big.Int, _checkerHash string, checkerUrl string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatchFootprintValue(&_TraceableFarms.TransactOpts, _companyNif, _batchNumber, _processName, _footprintTypeName, _description, _value, _checkerHash, checkerUrl)
 }
 
-// SetBatchOrigin is a paid mutator transaction binding the contract method 0xd03a82ee.
+// SetBatchFootprintValue is a paid mutator transaction binding the contract method 0x82339705.
 //
-// Solidity: function setBatchOrigin(string _batchId, string _description, string _location, string _locationCoordinates) returns()
-func (_TraceableFarms *TraceableFarmsTransactorSession) SetBatchOrigin(_batchId string, _description string, _location string, _locationCoordinates string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetBatchOrigin(&_TraceableFarms.TransactOpts, _batchId, _description, _location, _locationCoordinates)
+// Solidity: function setBatchFootprintValue(string _companyNif, string _batchNumber, string _processName, string _footprintTypeName, string _description, uint256 _value, string _checkerHash, string checkerUrl) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetBatchFootprintValue(_companyNif string, _batchNumber string, _processName string, _footprintTypeName string, _description string, _value *big.Int, _checkerHash string, checkerUrl string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatchFootprintValue(&_TraceableFarms.TransactOpts, _companyNif, _batchNumber, _processName, _footprintTypeName, _description, _value, _checkerHash, checkerUrl)
 }
 
-// SetBatchProcess is a paid mutator transaction binding the contract method 0x4849e7a9.
+// SetBatchOrigin is a paid mutator transaction binding the contract method 0x1c479fc5.
 //
-// Solidity: function setBatchProcess(string _batchId, string _name, string _description) returns()
-func (_TraceableFarms *TraceableFarmsTransactor) SetBatchProcess(opts *bind.TransactOpts, _batchId string, _name string, _description string) (*types.Transaction, error) {
-	return _TraceableFarms.contract.Transact(opts, "setBatchProcess", _batchId, _name, _description)
+// Solidity: function setBatchOrigin(string _companyNif, string _batchNumber, string _description, string _location, string _locationCoordinates) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetBatchOrigin(opts *bind.TransactOpts, _companyNif string, _batchNumber string, _description string, _location string, _locationCoordinates string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setBatchOrigin", _companyNif, _batchNumber, _description, _location, _locationCoordinates)
 }
 
-// SetBatchProcess is a paid mutator transaction binding the contract method 0x4849e7a9.
+// SetBatchOrigin is a paid mutator transaction binding the contract method 0x1c479fc5.
 //
-// Solidity: function setBatchProcess(string _batchId, string _name, string _description) returns()
-func (_TraceableFarms *TraceableFarmsSession) SetBatchProcess(_batchId string, _name string, _description string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetBatchProcess(&_TraceableFarms.TransactOpts, _batchId, _name, _description)
+// Solidity: function setBatchOrigin(string _companyNif, string _batchNumber, string _description, string _location, string _locationCoordinates) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetBatchOrigin(_companyNif string, _batchNumber string, _description string, _location string, _locationCoordinates string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatchOrigin(&_TraceableFarms.TransactOpts, _companyNif, _batchNumber, _description, _location, _locationCoordinates)
 }
 
-// SetBatchProcess is a paid mutator transaction binding the contract method 0x4849e7a9.
+// SetBatchOrigin is a paid mutator transaction binding the contract method 0x1c479fc5.
 //
-// Solidity: function setBatchProcess(string _batchId, string _name, string _description) returns()
-func (_TraceableFarms *TraceableFarmsTransactorSession) SetBatchProcess(_batchId string, _name string, _description string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetBatchProcess(&_TraceableFarms.TransactOpts, _batchId, _name, _description)
+// Solidity: function setBatchOrigin(string _companyNif, string _batchNumber, string _description, string _location, string _locationCoordinates) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetBatchOrigin(_companyNif string, _batchNumber string, _description string, _location string, _locationCoordinates string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatchOrigin(&_TraceableFarms.TransactOpts, _companyNif, _batchNumber, _description, _location, _locationCoordinates)
+}
+
+// SetBatchProcess is a paid mutator transaction binding the contract method 0x6fefd4fe.
+//
+// Solidity: function setBatchProcess(string _companyNif, string _batchNumber, string _name, string _description) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetBatchProcess(opts *bind.TransactOpts, _companyNif string, _batchNumber string, _name string, _description string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setBatchProcess", _companyNif, _batchNumber, _name, _description)
+}
+
+// SetBatchProcess is a paid mutator transaction binding the contract method 0x6fefd4fe.
+//
+// Solidity: function setBatchProcess(string _companyNif, string _batchNumber, string _name, string _description) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetBatchProcess(_companyNif string, _batchNumber string, _name string, _description string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatchProcess(&_TraceableFarms.TransactOpts, _companyNif, _batchNumber, _name, _description)
+}
+
+// SetBatchProcess is a paid mutator transaction binding the contract method 0x6fefd4fe.
+//
+// Solidity: function setBatchProcess(string _companyNif, string _batchNumber, string _name, string _description) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetBatchProcess(_companyNif string, _batchNumber string, _name string, _description string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetBatchProcess(&_TraceableFarms.TransactOpts, _companyNif, _batchNumber, _name, _description)
 }
 
 // SetCompany is a paid mutator transaction binding the contract method 0x97d3502e.
 //
-// Solidity: function setCompany(string _nif, string _bussinessName, string _location, string _locationCoordinates, string _informationalResourceUrl, string _consortiumId) returns()
-func (_TraceableFarms *TraceableFarmsTransactor) SetCompany(opts *bind.TransactOpts, _nif string, _bussinessName string, _location string, _locationCoordinates string, _informationalResourceUrl string, _consortiumId string) (*types.Transaction, error) {
-	return _TraceableFarms.contract.Transact(opts, "setCompany", _nif, _bussinessName, _location, _locationCoordinates, _informationalResourceUrl, _consortiumId)
+// Solidity: function setCompany(string _nif, string _bussinessName, string _location, string _locationCoordinates, string _informationalResourceUrl, string _consortiumName) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetCompany(opts *bind.TransactOpts, _nif string, _bussinessName string, _location string, _locationCoordinates string, _informationalResourceUrl string, _consortiumName string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setCompany", _nif, _bussinessName, _location, _locationCoordinates, _informationalResourceUrl, _consortiumName)
 }
 
 // SetCompany is a paid mutator transaction binding the contract method 0x97d3502e.
 //
-// Solidity: function setCompany(string _nif, string _bussinessName, string _location, string _locationCoordinates, string _informationalResourceUrl, string _consortiumId) returns()
-func (_TraceableFarms *TraceableFarmsSession) SetCompany(_nif string, _bussinessName string, _location string, _locationCoordinates string, _informationalResourceUrl string, _consortiumId string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetCompany(&_TraceableFarms.TransactOpts, _nif, _bussinessName, _location, _locationCoordinates, _informationalResourceUrl, _consortiumId)
+// Solidity: function setCompany(string _nif, string _bussinessName, string _location, string _locationCoordinates, string _informationalResourceUrl, string _consortiumName) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetCompany(_nif string, _bussinessName string, _location string, _locationCoordinates string, _informationalResourceUrl string, _consortiumName string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetCompany(&_TraceableFarms.TransactOpts, _nif, _bussinessName, _location, _locationCoordinates, _informationalResourceUrl, _consortiumName)
 }
 
 // SetCompany is a paid mutator transaction binding the contract method 0x97d3502e.
 //
-// Solidity: function setCompany(string _nif, string _bussinessName, string _location, string _locationCoordinates, string _informationalResourceUrl, string _consortiumId) returns()
-func (_TraceableFarms *TraceableFarmsTransactorSession) SetCompany(_nif string, _bussinessName string, _location string, _locationCoordinates string, _informationalResourceUrl string, _consortiumId string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetCompany(&_TraceableFarms.TransactOpts, _nif, _bussinessName, _location, _locationCoordinates, _informationalResourceUrl, _consortiumId)
+// Solidity: function setCompany(string _nif, string _bussinessName, string _location, string _locationCoordinates, string _informationalResourceUrl, string _consortiumName) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetCompany(_nif string, _bussinessName string, _location string, _locationCoordinates string, _informationalResourceUrl string, _consortiumName string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetCompany(&_TraceableFarms.TransactOpts, _nif, _bussinessName, _location, _locationCoordinates, _informationalResourceUrl, _consortiumName)
 }
 
-// SetConsortium is a paid mutator transaction binding the contract method 0x061d8165.
+// SetCompanyAccreditation is a paid mutator transaction binding the contract method 0x7eb270a4.
 //
-// Solidity: function setConsortium(string _id, string _name) returns()
-func (_TraceableFarms *TraceableFarmsTransactor) SetConsortium(opts *bind.TransactOpts, _id string, _name string) (*types.Transaction, error) {
-	return _TraceableFarms.contract.Transact(opts, "setConsortium", _id, _name)
+// Solidity: function setCompanyAccreditation(string _nif, string _accreditationName, string _checkerHash, string _checkerUrl) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetCompanyAccreditation(opts *bind.TransactOpts, _nif string, _accreditationName string, _checkerHash string, _checkerUrl string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setCompanyAccreditation", _nif, _accreditationName, _checkerHash, _checkerUrl)
 }
 
-// SetConsortium is a paid mutator transaction binding the contract method 0x061d8165.
+// SetCompanyAccreditation is a paid mutator transaction binding the contract method 0x7eb270a4.
 //
-// Solidity: function setConsortium(string _id, string _name) returns()
-func (_TraceableFarms *TraceableFarmsSession) SetConsortium(_id string, _name string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetConsortium(&_TraceableFarms.TransactOpts, _id, _name)
+// Solidity: function setCompanyAccreditation(string _nif, string _accreditationName, string _checkerHash, string _checkerUrl) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetCompanyAccreditation(_nif string, _accreditationName string, _checkerHash string, _checkerUrl string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetCompanyAccreditation(&_TraceableFarms.TransactOpts, _nif, _accreditationName, _checkerHash, _checkerUrl)
 }
 
-// SetConsortium is a paid mutator transaction binding the contract method 0x061d8165.
+// SetCompanyAccreditation is a paid mutator transaction binding the contract method 0x7eb270a4.
 //
-// Solidity: function setConsortium(string _id, string _name) returns()
-func (_TraceableFarms *TraceableFarmsTransactorSession) SetConsortium(_id string, _name string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetConsortium(&_TraceableFarms.TransactOpts, _id, _name)
+// Solidity: function setCompanyAccreditation(string _nif, string _accreditationName, string _checkerHash, string _checkerUrl) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetCompanyAccreditation(_nif string, _accreditationName string, _checkerHash string, _checkerUrl string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetCompanyAccreditation(&_TraceableFarms.TransactOpts, _nif, _accreditationName, _checkerHash, _checkerUrl)
 }
 
-// SetFootprintType is a paid mutator transaction binding the contract method 0xfd2aeace.
+// SetCompanyFootprintReportability is a paid mutator transaction binding the contract method 0x8e46b1f8.
 //
-// Solidity: function setFootprintType(string _id, string _name, string _unitMeasurementName, string _unitMeasurementSymbol) returns()
-func (_TraceableFarms *TraceableFarmsTransactor) SetFootprintType(opts *bind.TransactOpts, _id string, _name string, _unitMeasurementName string, _unitMeasurementSymbol string) (*types.Transaction, error) {
-	return _TraceableFarms.contract.Transact(opts, "setFootprintType", _id, _name, _unitMeasurementName, _unitMeasurementSymbol)
+// Solidity: function setCompanyFootprintReportability(string _nif, string _footprintTypeName, string _footprintReportTypeName, string _description) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetCompanyFootprintReportability(opts *bind.TransactOpts, _nif string, _footprintTypeName string, _footprintReportTypeName string, _description string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setCompanyFootprintReportability", _nif, _footprintTypeName, _footprintReportTypeName, _description)
 }
 
-// SetFootprintType is a paid mutator transaction binding the contract method 0xfd2aeace.
+// SetCompanyFootprintReportability is a paid mutator transaction binding the contract method 0x8e46b1f8.
 //
-// Solidity: function setFootprintType(string _id, string _name, string _unitMeasurementName, string _unitMeasurementSymbol) returns()
-func (_TraceableFarms *TraceableFarmsSession) SetFootprintType(_id string, _name string, _unitMeasurementName string, _unitMeasurementSymbol string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetFootprintType(&_TraceableFarms.TransactOpts, _id, _name, _unitMeasurementName, _unitMeasurementSymbol)
+// Solidity: function setCompanyFootprintReportability(string _nif, string _footprintTypeName, string _footprintReportTypeName, string _description) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetCompanyFootprintReportability(_nif string, _footprintTypeName string, _footprintReportTypeName string, _description string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetCompanyFootprintReportability(&_TraceableFarms.TransactOpts, _nif, _footprintTypeName, _footprintReportTypeName, _description)
 }
 
-// SetFootprintType is a paid mutator transaction binding the contract method 0xfd2aeace.
+// SetCompanyFootprintReportability is a paid mutator transaction binding the contract method 0x8e46b1f8.
 //
-// Solidity: function setFootprintType(string _id, string _name, string _unitMeasurementName, string _unitMeasurementSymbol) returns()
-func (_TraceableFarms *TraceableFarmsTransactorSession) SetFootprintType(_id string, _name string, _unitMeasurementName string, _unitMeasurementSymbol string) (*types.Transaction, error) {
-	return _TraceableFarms.Contract.SetFootprintType(&_TraceableFarms.TransactOpts, _id, _name, _unitMeasurementName, _unitMeasurementSymbol)
+// Solidity: function setCompanyFootprintReportability(string _nif, string _footprintTypeName, string _footprintReportTypeName, string _description) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetCompanyFootprintReportability(_nif string, _footprintTypeName string, _footprintReportTypeName string, _description string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetCompanyFootprintReportability(&_TraceableFarms.TransactOpts, _nif, _footprintTypeName, _footprintReportTypeName, _description)
+}
+
+// SetConsortium is a paid mutator transaction binding the contract method 0x2fd47f2b.
+//
+// Solidity: function setConsortium(string _name) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetConsortium(opts *bind.TransactOpts, _name string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setConsortium", _name)
+}
+
+// SetConsortium is a paid mutator transaction binding the contract method 0x2fd47f2b.
+//
+// Solidity: function setConsortium(string _name) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetConsortium(_name string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetConsortium(&_TraceableFarms.TransactOpts, _name)
+}
+
+// SetConsortium is a paid mutator transaction binding the contract method 0x2fd47f2b.
+//
+// Solidity: function setConsortium(string _name) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetConsortium(_name string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetConsortium(&_TraceableFarms.TransactOpts, _name)
+}
+
+// SetFootprintReportType is a paid mutator transaction binding the contract method 0x4e902e8c.
+//
+// Solidity: function setFootprintReportType(string _name) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetFootprintReportType(opts *bind.TransactOpts, _name string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setFootprintReportType", _name)
+}
+
+// SetFootprintReportType is a paid mutator transaction binding the contract method 0x4e902e8c.
+//
+// Solidity: function setFootprintReportType(string _name) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetFootprintReportType(_name string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetFootprintReportType(&_TraceableFarms.TransactOpts, _name)
+}
+
+// SetFootprintReportType is a paid mutator transaction binding the contract method 0x4e902e8c.
+//
+// Solidity: function setFootprintReportType(string _name) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetFootprintReportType(_name string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetFootprintReportType(&_TraceableFarms.TransactOpts, _name)
+}
+
+// SetFootprintType is a paid mutator transaction binding the contract method 0x077d79fc.
+//
+// Solidity: function setFootprintType(string _name, string _unitMeasurementName, string _unitMeasurementSymbol) returns()
+func (_TraceableFarms *TraceableFarmsTransactor) SetFootprintType(opts *bind.TransactOpts, _name string, _unitMeasurementName string, _unitMeasurementSymbol string) (*types.Transaction, error) {
+	return _TraceableFarms.contract.Transact(opts, "setFootprintType", _name, _unitMeasurementName, _unitMeasurementSymbol)
+}
+
+// SetFootprintType is a paid mutator transaction binding the contract method 0x077d79fc.
+//
+// Solidity: function setFootprintType(string _name, string _unitMeasurementName, string _unitMeasurementSymbol) returns()
+func (_TraceableFarms *TraceableFarmsSession) SetFootprintType(_name string, _unitMeasurementName string, _unitMeasurementSymbol string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetFootprintType(&_TraceableFarms.TransactOpts, _name, _unitMeasurementName, _unitMeasurementSymbol)
+}
+
+// SetFootprintType is a paid mutator transaction binding the contract method 0x077d79fc.
+//
+// Solidity: function setFootprintType(string _name, string _unitMeasurementName, string _unitMeasurementSymbol) returns()
+func (_TraceableFarms *TraceableFarmsTransactorSession) SetFootprintType(_name string, _unitMeasurementName string, _unitMeasurementSymbol string) (*types.Transaction, error) {
+	return _TraceableFarms.Contract.SetFootprintType(&_TraceableFarms.TransactOpts, _name, _unitMeasurementName, _unitMeasurementSymbol)
 }
